@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+	<title>HTML Layout Template</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="/static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    {{#each jsscripts}}
+    <script src="/static/{{this}}"></script>
+    {{/each}}
+
+</head>
+<body>
+		<h1 id="logo">
+			<img class="logo" src="/static/images/logo.png">
+		</h1>		
+		<nav>
+		  <ul class="menuBar">
+		  	<li class="menuLink"><a href="/products">Product Inventory</a></li>
+		  	<li class="menuLink"><a href="/orders">Orders</a></li>
+		  	<li class="menuLink"><a href="/order_details">Order Details</a></li>
+		    <li class="menuLink"><a href="/buyers">Buyers</a></li> 
+		    <li class="menuLink"><a href="/suppliers">Suppliers</a></li>
+		  </ul>
+		</nav>
+	{{{body}}}
+</body>
+</html>
