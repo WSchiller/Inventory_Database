@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Suppliers</title>
+	</head>
+
+	<body>
+    
+		<h1>Suppliers</h1>
+
+    <table id="Suppliers">
+        <form id = "addSupplier" action="/suppliers" method="post">       
+          <p>
+              <label for="city">City:</label>
+              <input name="City" type="text" maxlength="30" size="30" required>
+          </p>
+          <p>
+              <label for="state">State:</label>
+              <input name="State" type="text" maxlength="30" size="30" required>
+          </p>
+          <p>
+              <input class="button" type="submit" value="Add Supplier">
+          </p>
+         </form>
+
+         <thead>
+            <th>Supplier Id</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Remove Supplier</th>
+        </thead>
+        <tbody>
+          {{#each suppliers}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{City}}</td>
+            <td>{{State}}</td>
+            <td><button onclick="deleteSupplier({{id}})">Delete</button></td>        
+          </tr>
+          {{/each}}
+        </tbody> 
+    </table>
+  </body>
+</html>

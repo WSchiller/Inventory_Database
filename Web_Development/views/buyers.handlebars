@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Buyers</title>
+	</head>
+
+	<body>
+    
+		<h1>Buyers Directory</h1>
+
+    <table id="Buyers">
+        <form id = "addBuyer" action="/buyers" method="post">       
+          <p>
+              <label for="Fname">First Name:</label>
+              <input name="FirstName" type="text" maxlength="30" size="30" required>
+          </p>
+          <p>
+              <label for="Lname">Last Name:</label>
+              <input name="LastName" type="text" maxlength="30" size="30" required>
+          </p>
+          <p>
+              <label for="address">Street Address:</label>
+              <input name="StreetAddress" type="text" maxlength="50" size="50" required>
+          </p>
+          <p>
+              <label for="city">City:</label>
+              <input name="City" type="text" maxlength="30 size="30" required>
+          </p>
+          <p>
+              <label for="state">State:</label>
+              <input name="State" type="text" maxlength="30" size="30" required>
+          </p>
+           <p>
+              <label for="zipcode">Zip Code:</label>
+              <input name="ZipCode" type="text" minlength="5" maxlength="5" size="5" required>
+          </p>
+          <p>
+              <label for="phonenumber">Phone Number:</label>
+              <input name="Phone" type="tel" placeholder="(xxx)xxx-xxxx" minlength ="13" maxlength="13" size="13" required>
+          </p>
+          <p>
+              <label for="email">Email:</label>
+              <input name="Email" type="email" maxlength="35" size="35">
+          </p>
+          <p>
+              <input class="button" type="submit" value="Add Buyer">
+          </p>
+        </form>
+
+        <thead>
+            <th>Buyer Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Street Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip Code</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Remove Buyer</th>
+        </thead>
+        <tbody>
+          {{#each buyers}}
+          <tr>
+            <td>{{id}}</td>
+            <td>{{FirstName}}</td>
+            <td>{{LastName}}</td>
+            <td>{{StreetAddress}}</td>
+            <td>{{City}}</td>
+            <td>{{State}}</td>
+            <td>{{ZipCode}}</td>
+            <td>{{Phone}}</td>
+            <td>{{Email}}</td>
+            <td><button onclick="deleteBuyer({{id}})">Delete</button></td>        
+          </tr>
+          {{/each}}
+        </tbody> 
+    </table>
+  </body>
+</html>
+
+      

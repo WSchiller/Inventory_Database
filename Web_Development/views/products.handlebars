@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Product Inventory</title>
+    <script>
+$(document).ready(function(){
+  $("#filter").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#productTable tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+	</head>
+	<body>
+
+		<h1>Product List</h1>
+
+    <table id="ProductInventory">
+    		<form id = "addProduct" action="/products" method="post">  			
+    			<p>
+              <label for="product_name">Product Name:</label>
+              <input name="ProductName" type="text" maxlength="40" size="40" required>
+          </p>
+          <p>
+              <label for="starting_inventory">Starting Inventory:</label>
+              <input name="StartingInventory" type="text" maxlength="6" size="6" required>
+          </p>
+          <p>
+              <label for="units_in_stock">Units in Stock:</label>
+              <input name="UnitsInStock" type="text" maxlength="6" size="6" required>
+          </p>
+          <p>
+              <label for="units_on_order">Units on Order:</label>
+              <input name="UnitsOnOrder" type="text" maxlength="6" size="6" required>
+          </p>
+          <p>
+              <label for="unit_price">Unit Price:</label>
+              <input name="UnitPrice" type="text" maxlength="6" size="6" required>
+          </p>
+           <p>
+              <label for="restock_level">Restock Level:</label>
+              <input name="RestockLevel" type="text" maxlength="4" size="4" required>
+          </p>
+          <p>
+              <input class="button" type="submit" value="Add Product">
+          </p>
+        </form>
+
+    		<input type="text" id="filter" placeholder="Search for a product by name..">
+
+  			<thead>
+            <th>Product Id</th>
+			      <th>Product Name</th>
+  			    <th>Starting Inventory</th>
+  			    <th>Units in Stock</th>
+  			    <th>Units on Order</th>
+  			    <th>Unit Price</th>
+  			    <th>Restock Level</th>
+  			    <th>Edit Product Details</th>
+            <th>Remove Product</th>
+  			</thead>
+        <tbody id="productTable">
+          {{#each products}}
+    			<tr>
+              <td>{{id}}</td>
+      				<td>{{ProductName}}</td>
+              <td>{{StartingInventory}}</td>
+              <td>{{UnitsInStock}}</td>
+              <td>{{UnitsOnOrder}}</td>
+              <td>${{UnitPrice}}</td>
+              <td>{{RestockLevel}}</td>
+      				<td><a href="/products/{{id}}">Update</a></td>
+              <td><button onclick="deleteProduct({{id}})">Delete</button></td>				
+          </tr>
+          {{/each}}
+		    </tbody> 
+    </table>
+	</body>
+</html>
+
+
+

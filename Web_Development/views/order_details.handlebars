@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Order Details</title>
+	</head>
+
+	<body>
+    
+		<h1>Order Details</h1>
+
+    <table id="orderdetails">
+    	<form id ="addToOrder" action="/order_details" method="post">  			
+    		<p>
+          <label for="orderId">Order Id:</label>
+          <select name="oid">
+            {{#each orders}}
+            <option value="{{id}}">{{id}}</option>
+            {{/each}}
+          </select>
+        </p>
+        <p>
+          <label for="productId">Product:</label>
+          <select name="pid">
+            {{#each products}}
+            <option value="{{id}}">{{ProductName}}</option>
+            {{/each}}
+          </select>
+        </p>
+        <p>
+          <label for="ProductQuantity">Product Quantity:</label>
+          <input name="ProductQuantity" type="text" maxlength="5" size="5" required>
+        </p>
+        <p>
+          <label for="TotalUnitPrice">Total Unit Price:</label>
+          <input name="TotalUnitPrice" type="text" maxlength="8" size ="8" required>
+        </p>
+        <p>
+          <input class "button" type="submit" value="Add product to an existing order">
+        </p>
+        </form>
+
+        <thead>
+          <th>Order Id</th>
+          <th>Product Id</th>
+          <th>Product Quantity</th>
+          <th>Total Unit Price</th>
+          <th>Remove Product from Order</th>
+        </thead>
+        <tbody id="orderDetailsTable">
+          {{#each order_details}}
+          <tr>
+            <td>{{oid}}</td>
+            <td>{{pid}}</td>
+            <td>{{ProductQuantity}}</td>
+            <td>${{TotalUnitPrice}}</td>    
+            <td><button onclick="deleteOrderProduct({{pid}})">Delete</button></td>  
+          </tr>
+          {{/each}}
+    </tbody> 
+    </table>
+  </body>
+</html>
+            
+

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Orders</title>
+	</head>
+
+	<body>
+    
+		<h1>Orders</h1>
+
+    <table id="Orders">
+    	<form id = "addOrder" action="/orders" method="post">  			
+    		<p>
+              <label for="OrderDate">Order Date:</label>
+              <input name="OrderDate" type="date" required>
+          	</p>
+            <p>
+              <label for="OrderPrice">Order Price:</label>
+              <input name="OrderPrice" type="text" maxlength="8" size="8" required>
+            </p>
+            <p>
+              <label for="Supplier">Supplier:</label>
+              <select name="SupplierId" required>
+              	{{#each suppliers}}
+              	<option value="{{id}}">{{City}}, {{State}}</option>
+              	{{/each}}
+              </select><br>
+          	</p>
+          	<p>
+              <label for="Buyers">Buyer:</label>
+              <select name="BuyerId" required>
+              	{{#each buyers}}
+              	<option value="{{id}}">{{FirstName}} {{LastName}}</option>
+              	{{/each}}
+              </select>
+          </p>
+          <p>
+              <input class="button" type="submit" value="Create Order">
+          </p>
+        </form>
+
+        <h3>Search by:</h3>
+        <form id = "search_form" action="/orders/id" method="get">
+        	<p>
+        		<select name="OrderId">
+        			<option name="id">Order Id</option>
+        			<option name="OrderDate">Order Date</option>
+        			<option name="SupplierId">Supplier Id</option>
+        			<option name="BuyerId">Buyer Id</option>
+        		</select>
+        		<input name="id" type="text" maxlength="10" size="10" required>
+        	</p>
+        	 <p>
+             	 <input class="button" type="submit" value="Search">
+          	</p>
+        </form>
+
+        <thead>
+			<th>Order ID</th>
+  			<th>Date</th>
+  			<th>Price</th>
+  			<th>Supplier</th>
+  			<th>Buyer</th>
+  			<th>Remove Order</th>
+  		</thead>
+        <tbody id="orderTable">
+          {{#each orders}}
+          <tr>
+      		  <td>{{id}}</td>
+              <td>{{OrderDate}}</td>
+              <td>${{OrderPrice}}</td>
+              <td>{{Suppliers}}</td>
+              <td>{{Buyers}}</td>		
+              <td><button onclick="deleteOrder({{id}})">Delete</button></td>	
+          </tr>
+          {{/each}}
+		</tbody> 
+    </table>
+  </body>
+</html>

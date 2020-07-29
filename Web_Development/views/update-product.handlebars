@@ -1,0 +1,10 @@
+<h1>Update {{product.ProductName}}</h1>
+<form id="update-product" action"/products" method="post">
+	Product Name: <input type="text" name="ProductName" value="{{product.ProductName}}"<br>
+	Starting Inventory: <input type="text" name="StartingInventory" value="{{product.StartingInventory}}"<br>
+	Units in Stock: <input type="text" name="UnitsInStock" value="{{product.UnitsInStock}}"<br>
+	Units on Order: <input type="text" name="UnitsOnOrder" value="{{product.UnitsOnOrder}}"<br>
+	Unit Price: <input type="text" name="UnitPrice" value="{{product.UnitPrice}}"<br>
+	Restock Level: <input type="text" name="RestockLevel" value="{{product.RestockLevel}}"<br>
+</form>
+<button onclick="updateProduct({{product.id}})">Update</button>
